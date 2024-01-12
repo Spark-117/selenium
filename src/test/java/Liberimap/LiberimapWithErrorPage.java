@@ -10,19 +10,19 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class LiberimapFinal {
+public class LiberimapWithErrorPage {
 
     private static final Duration IMPLICIT_WAIT_DURATION = Duration.ofSeconds(5);
     private final WebDriver driver;
     private static final int WORD_SLIDER_WAIT_TIME = 4500;
 
-    public LiberimapFinal() {
+    public LiberimapWithErrorPage() {
         this.driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT_DURATION);
     }
 
     public static void main(String[] args) throws InterruptedException {
-        LiberimapFinal liberimap = new LiberimapFinal();
+        LiberimapWithErrorPage liberimap = new LiberimapWithErrorPage();
         liberimap.acceptCookies();
         liberimap.handleWordSlider();
         liberimap.scrollDown();
@@ -136,7 +136,7 @@ public class LiberimapFinal {
     }
 
     private void english() throws InterruptedException {
-        driver.findElement(By.xpath("(//img[@alt='logo'])[1]")).click();
+
         WebElement languageButton = driver.findElement(By.xpath(
                 "((//button[@class='flex items-center gap-1 w-full lg:w-auto lg:px-3 py-2 text-dc-500 hover:text-gray-900'])[1])"));
         Actions actions = new Actions(driver);
